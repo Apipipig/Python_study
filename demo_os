@@ -11,7 +11,21 @@ def demo1():
     for filename in myFiles:
         print(os.path.join('C:\\Users\\asweigart', filename))
 
+def demo2():
+    # 读取文件内容
+    # 方法一：将整个文件的内容读取为一个字符串值
+    # 打开文件
+    helloFile = open('/Users/benice/Downloads/hello.txt')
+    # 读取文件
+    helloContent = helloFile.read()
+    print(helloContent)
+    # 方法二：将文件内容读取为一个字符串的列表
+    sonnetFile = open('/Users/benice/Downloads/sonnet29.txt')
+    sonnerContent = sonnetFile.readline()
+    print(sonnerContent)
 
 
 
-demo1()
+
+
+demo2()
