@@ -1,0 +1,17 @@
+"""
+    内容：读写文件
+    日期：2019/08/23
+"""
+
+import os
+
+def demo1():
+    # 将一个文件名列表中的名称，添加到文件夹名称的末尾
+    myFiles = ['accounts.txt', 'details.csv','invite.docx']
+    for filename in myFiles:
+        print(os.path.join('C:\\Users\\asweigart', filename))
+
+
+
+
+demo1()

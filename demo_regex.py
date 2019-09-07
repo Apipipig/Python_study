@@ -127,5 +127,30 @@ def demo12():
 
 # def demo13():
     # 【项目】：电话号码和 E-mail 地址提取程序
+    # 电话号码的正则表达式
+    phoneRegex = re.findall(r'\(?0\d{2,3}[)-]?\d{7,8}',text)#\(?  [?表示括号可有可无,\(表示匹配(]
+                                                    #0\d{2,3} 表示区号。
+                                                    #[) -]?  表示区号后面可以跟")"," ","-"，也可能什么都没有
+                                                    #\d{7,8} 表示7位或8位的号码
+    # E-mail地址的正则表达式
+    mailRegex = re.findall(r'^[0-9a-zA-Z_]{0,19}@[0-9a-zA-Z]{1,13}\.[com,cn,net]{1,3}$',text)
+
+    # pyperclip.paste()函数取得剪贴板的文本
+    # re模块匹配文本中所有的电话号码和E-mail地址
+# import pyperclip, re
+#     text = str(pyperclip.paste())
+#     matches = []
+#     for groups in phoneRegex.findall(text):
+#         phoneNum = '-'.join(([groups[1], groups[3], groups[5]])
+
+    # 将它们粘贴到剪贴板。
+    # 现在你可以开始思考，如何用代码来完成工作。代码需要做下面的事情：
+    # 使用 pyperclip 模块复制和粘贴字符串。
+    # 创建两个正则表达式，一个匹配电话号码，另一个匹配 E-mail 地址。
+    # 对两个正则表达式，找到所有的匹配，而不只是第一次匹配。
+    # 将匹配的字符串整理好格式，放在一个字符串中，用于粘贴。
+    # 如果文本中没有找到匹配，显示某种消息。
+
+
 
 demo12()
