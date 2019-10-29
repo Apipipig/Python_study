@@ -20,12 +20,99 @@ def demo2():
     helloContent = helloFile.read()
     print(helloContent)
     # 方法二：将文件内容读取为一个字符串的列表
+    # 使用readlines
     sonnetFile = open('/Users/benice/Downloads/sonnet29.txt')
-    sonnerContent = sonnetFile.readline()
+    sonnerContent = sonnetFile.readlines()
     print(sonnerContent)
+    # 使用readline单行遍历，用循环语句来完成对全文的读取
+    #while True: str = sonnetFile.readline()print(str)
+    #
+    #if len(str) == o:break
+
+import shelve
+def demo3():
+    # 用shelve模块保存变量
+    # 创建一个mydata.db文件
+    shelfFile = shelve.open('mydata')
+    cats = ['Zophie','Pooka','Simon']
+    shelfFile['cats'] = cats
+    shelfFile.close()
+
+
+import random
+def demo4():
+    #项目：生成随机的试卷文件
+
+    capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
+    'Arkansas': 'Little Rock', 'California': 'Sacramento', 'Colorado': 'Denver',
+    'Connecticut': 'Hartford', 'Delaware': 'Dover', 'Florida': 'Tallahassee',
+    'Georgia': 'Atlanta', 'Hawaii': 'Honolulu', 'Idaho': 'Boise', 'Illinois':
+    'Springfield', 'Indiana': 'Indianapolis', 'Iowa': 'Des Moines', 'Kansas':
+    'Topeka', 'Kentucky': 'Frankfort', 'Louisiana': 'Baton Rouge', 'Maine':
+    'Augusta', 'Maryland': 'Annapolis', 'Massachusetts': 'Boston', 'Michigan':
+    'Lansing', 'Minnesota': 'Saint Paul', 'Mississippi': 'Jackson', 'Missouri':
+    'Jefferson City', 'Montana': 'Helena', 'Nebraska': 'Lincoln', 'Nevada':
+    'Carson City', 'New Hampshire': 'Concord', 'New Jersey': 'Trenton',
+    'NewMexico': 'Santa Fe', 'New York': 'Albany', 'North Carolina': 'Raleigh',
+    'North Dakota': 'Bismarck', 'Ohio': 'Columbus', 'Oklahoma': 'Oklahoma City',
+    'Oregon': 'Salem', 'Pennsylvania': 'Harrisburg', 'Rhode Island': 'Providence',
+    'South Carolina': 'Columbia', 'South Dakota': 'Pierre', 'Tennessee':
+    'Nashville', 'Texas': 'Austin', 'Utah': 'Salt Lake City', 'Vermont':
+    'Montpelier', 'Virginia': 'Richmond', 'Washington': 'Olympia', 'WestVirginia': 'Charleston',
+    'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
+
+    for quizNum in range(35):
+        # 创建试卷和答案文件
+        quizFile = open('capitalsquiz%s.txt' % (quizNum + 1), 'w')#%s 的意思是，这个%s是把后面%()里的字符串填入
+        answerKeyFile = open('capitalsquiz_answer%s.txt' % (quizNum + 1), 'w')
+
+        # 写标题和开头
+        quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
+        quizFile.write(' ' * 20) + 'State Capitals Quiz(From %s)' % (quizNum + 1)
+        quizFile.write('\n\n')
+
+        # 打乱capital字典
+        states = list(capitals.keys())
+        random.shuffle(states)
+
+        # 循环states，制造50个问题
+        for questionNum in range(50):
+            # write the answer and the answer options to the quiz file.
+            quizFile.write('%s. What is the capital of $s?\n' % (questionNum + 1,states[questionNum]))
+            for i in range(4):
+                quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
+            quizFile.write('\n')
+
+            # Write the answer key to a file.
+            answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[
+                answerOptions.index(correctAnswer)]))
+            quizFile.close()
+            answerKeyFile.close()
+
+demo5():
+    # 将带有美国风格日期的文件改成欧洲风格日期
+    import shutil, os, re
+    # 1.创建一个正则表达式匹配美国风格日期的文件
+    dataPrattern = re,compile(r"""(.*?)
+        ((0|1?\d)-
+        ((0|1|2|3)?\d)-
+        ((19|20|)\d\d)
+        (.*?)$
+        """,re.VERBOSE)
+    # Loop over the files in the working directory.
+    for amerFilename in os.listdir('.'):
+        mo = dataPrattern.search(amerFilename)
+
+    # TODO: Skip files without a data.
+
+    # TODO: Get different parts of the filename.
+
+    # TODO: From the European-style filename.
+
+    # TODO: Get the full, absolute file paths.
+
+    # TODO: Rename the files.
 
 
 
-
-
-demo2()
+demo5()
